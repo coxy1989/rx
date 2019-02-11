@@ -1,0 +1,38 @@
+version: 2
+
+# *****************
+# Jobs
+# *****************
+
+jobs:
+
+  # website
+  website:
+    docker: 
+      - image: coxy1989/npm-aws
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: (cd rx_spa; npm run build)
+      - run:
+          name: Upload to s3
+          command: aws s3 cp rx_spa/build s3://bucket-host-website-rx  --recursive
+
+
+# *****************
+# Workflows
+# *****************
+
+workflows:
+  version: 2
+  master:
+    jobs:
+
+      # website
+      - website:
+          filters:
+            branches:
+              only:
+                - master
+
