@@ -98,7 +98,7 @@ export function generate(train_model){
     x0 = Array(NUM_CHARS).fill(0);
     x0[idx] = 1;
     x0 = tf.tensor([[x0]]);
-    if (ch == '\n' | (string.length + 1) > 30){
+    if (ch === '\n' | (string.length + 1) > 30){
       stopCondition = true
     }
   }

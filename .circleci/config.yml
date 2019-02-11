@@ -13,6 +13,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install npm deps
+          command: (cd rx_spa; npm install)
+      - run:
           name: Build
           command: (cd rx_spa; npm run build)
       - run:
