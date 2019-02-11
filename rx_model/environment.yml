@@ -1,0 +1,9 @@
+name: rx
+channels:
+  - anaconda
+dependencies:
+  - python=3.6
+  - jupyter=1.0.0
+  - tensorflow=1.10.0
+  - keras=2.2.4
+
