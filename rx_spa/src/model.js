@@ -1,50 +1,48 @@
 import * as tf from '@tensorflow/tfjs';
-const LATENT_DIM = 10;
-const NUM_CHARS = 40;
+const LATENT_DIM = 64;
+const NUM_CHARS = 38;
 
-const MODEL_URL = 'https://rx.coxy1989.com/train_tfjs/model.json'
-//const MODEL_URL = 'http://localhost:3000/train_tfjs/model.json'
+//const MODEL_URL = 'https://rx.coxy1989.com/train_tfjs/model.json'
+const MODEL_URL = 'http://localhost:3000/train_tfjs/model.json'
 
 const idx_char = {0: 'START',
-            1: '\n',
-            2: ' ',
-            3: "'",
-            4: '(',
-            5: ')',
-            6: ',',
-            7: '-',
-            8: '/',
-            9: '0',
-            10: '1',
-            11: '3',
-            12: '5',
-            13: 'A',
-            14: 'B',
-            15: 'C',
-            16: 'D',
-            17: 'E',
-            18: 'F',
-            19: 'G',
-            20: 'H',
-            21: 'I',
-            22: 'J',
-            23: 'K',
-            24: 'L',
-            25: 'M',
-            26: 'N',
-            27: 'O',
-            28: 'P',
-            29: 'Q',
-            30: 'R',
-            31: 'S',
-            32: 'T',
-            33: 'U',
-            34: 'V',
-            35: 'W',
-            36: 'X',
-            37: 'Y',
-            38: 'Z',
-            39: 'É'}
+                  1: '\n',
+                  2: ' ',
+                  3: "'",
+                  4: '-',
+                  5: '/',
+                  6: '0',
+                  7: '1',
+                  8: '3',
+                  9: '5',
+                  10: '7',
+                  11: 'A',
+                  12: 'B',
+                  13: 'C',
+                  14: 'D',
+                  15: 'E',
+                  16: 'F',
+                  17: 'G',
+                  18: 'H',
+                  19: 'I',
+                  20: 'J',
+                  21: 'K',
+                  22: 'L',
+                  23: 'M',
+                  24: 'N',
+                  25: 'O',
+                  26: 'P',
+                  27: 'Q',
+                  28: 'R',
+                  29: 'S',
+                  30: 'T',
+                  31: 'U',
+                  32: 'V',
+                  33: 'W',
+                  34: 'X',
+                  35: 'Y',
+                  36: 'Z',
+                  37: 'É'}
 
 function sample(probs) {
     const sum = probs.reduce((a, b) => a + b, 0)
@@ -62,7 +60,6 @@ export async function loadModel(){
   return await tf.loadModel(MODEL_URL);
 }
 
-
 export function generate(train_model){
 
   var h0 = tf.tensor([Array(LATENT_DIM).fill(0)]);
@@ -75,8 +72,8 @@ export function generate(train_model){
   const lstm = train_model.layers[1]
   const dense = train_model.layers[2]
 
-  const inf_model_h = tf.input({shape:[10]})
-  const inf_model_c = tf.input({shape:[10]})
+  const inf_model_h = tf.input({shape:[LATENT_DIM]})
+  const inf_model_c = tf.input({shape:[LATENT_DIM]})
 
   const lstm_res = lstm.apply(inf_model_x, {initialState: [inf_model_h, inf_model_c]})
   const outs = dense.apply(lstm_res[0])
