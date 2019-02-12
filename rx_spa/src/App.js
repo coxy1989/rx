@@ -106,7 +106,7 @@ class App extends Component {
             <code>{this.state.challenge}</code>
           </p>
       <ButtonToolbar>
-        <Button variant="success" size='lg' onClick={this.onRealClick}>Real</Button>
+        <Button className="lbutton" variant="success" size='lg' onClick={this.onRealClick}>Real</Button>
         <Button variant="danger" size='lg' onClick={this.onFakeClick}>Fake</Button>
       </ButtonToolbar>
         </header>
