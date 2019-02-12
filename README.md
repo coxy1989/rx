@@ -4,13 +4,13 @@
 
 A character-level language model trained on the [British National Formulary (BNF)](https://bnf.nice.org.uk/) A-Z of clinical medicines and a minigame to challenge it.
 
-[Play the game](http://bucket-host-website-rx.s3-website.eu-west-2.amazonaws.com/)
+[Play the game](https://rx.coxy1989.com)
 
 What's in the box?
 
 - Keras/Tensorflow [implementation](https://nbviewer.jupyter.org/github/coxy1989/rx/blob/master/rx_model/rx.ipynb) of an LSTM character language model.
 - [Inference in the browser](https://github.com/coxy1989/rx/blob/master/rx_spa/src/model.js) with Tensorflow.js.
-- Quick and dirty [minigame](http://bucket-host-website-rx.s3-website.eu-west-2.amazonaws.com/), built in react.
+- Quick and dirty [minigame](https://rx.coxy1989.com), built in react.
 
 ## Developer Quickstart
 
