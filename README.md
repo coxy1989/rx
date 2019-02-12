@@ -8,9 +8,9 @@ A character-level language model trained on the [British National Formulary (BNF
 
 What's in the box?
 
-- Keras/Tensorflow [implementation](https://nbviewer.jupyter.org/github/coxy1989/rx/blob/master/rx_model/rx.ipynb) of an LSTM character language model.
+- Keras/Tensorflow [pipeline](https://nbviewer.jupyter.org/github/coxy1989/rx/blob/master/rx_model/rx.ipynb) for a character-level language model.
 - [Inference in the browser](https://github.com/coxy1989/rx/blob/master/rx_spa/src/model.js) with Tensorflow.js.
-- Quick and dirty [minigame](https://rx.coxy1989.com), built in react.
+- Quick n' Dirty [minigame](https://rx.coxy1989.com), built in react.
 
 ## Developer Quickstart
 
