@@ -1,4 +1,4 @@
-# Rx
+# Rx 💉
 
 [![CircleCI](https://circleci.com/gh/coxy1989/rx.svg?style=svg)](https://circleci.com/gh/coxy1989/rx)
 
