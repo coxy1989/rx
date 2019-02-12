@@ -2,21 +2,44 @@
 
 [![CircleCI](https://circleci.com/gh/coxy1989/rx.svg?style=svg)](https://circleci.com/gh/coxy1989/rx)
 
-Train a character language model on the British National Formulary's (BNF) A-Z of clinical medicine available from the National Health Service. Challenge it via a mini-game in the browser.
+A character-level language model trained on the [British National Formulary (BNF)](https://bnf.nice.org.uk/) A-Z of clinical medicines and a minigame to challenge it.
 
-[Challenge the model](http://bucket-host-website-rx.s3-website.eu-west-2.amazonaws.com/)
+[Play the game](http://bucket-host-website-rx.s3-website.eu-west-2.amazonaws.com/)
 
 What's in the box?
 
-- Train: Keras/Tensorflow implementation of an LSTM character language model.
-- Inference: Perform inference in the browser with Tensorflow.js.
-- Minigame: Quick and dirty react mini-game.
+- Keras/Tensorflow [implementation](https://nbviewer.jupyter.org/github/coxy1989/rx/blob/master/rx_model/rx.ipynb) of an LSTM character language model.
+- [Inference in the browser](https://github.com/coxy1989/rx/blob/master/rx_spa/src/model.js) with Tensorflow.js.
+- Quick and dirty [minigame](http://bucket-host-website-rx.s3-website.eu-west-2.amazonaws.com/), built in react.
 
-## Quickstart
+## Developer Quickstart
 
-TODO
+### Train the model
 
-## References
+1. `git clone git@github.com:coxy1989/rx`
 
-TODO
+2. `cd rx/rx_model` 
+
+3. `conda env create -f environment.yml`
+
+3. `source activate rx`
+
+4. `jupyter notebook`
+
+5. [Import the keras model to tensorflow.js](https://js.tensorflow.org/tutorials/import-keras.html)
+
+### Run the frontend
+
+1. `git clone git@github.com:coxy1989/rx`
+
+2. `cd rx/rx_spa` 
+
+3. `docker build -t rx .`
+
+4. `docker run -it -v $PWD:/app -p 3000:3000 --entrypoint bash rx`
+
+5. `cd app`
+
+6. `npm start`
+
 
