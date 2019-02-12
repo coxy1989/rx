@@ -4,7 +4,7 @@
 
 A character-level language model trained on the [British National Formulary (BNF)](https://bnf.nice.org.uk/) A-Z of clinical medicines and a minigame to challenge it.
 
-![](./rx.jpg)
+![](./rx.gif)
 
 [Play the game](https://rx.coxy1989.com)
 
