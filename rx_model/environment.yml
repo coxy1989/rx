@@ -4,6 +4,7 @@ channels:
 dependencies:
   - python=3.6
   - jupyter=1.0.0
-  - tensorflow=1.10.0
+  - tensorflow-gpu=1.12.0
   - keras=2.2.4
+  - pandas=0.24.1
 
