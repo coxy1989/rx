@@ -35,3 +35,67 @@ resource "aws_s3_bucket" "bucket_host_website" {
 EOF
 }
 
+resource "aws_cloudfront_distribution" "s3_distribution" {
+  origin {
+    domain_name = "bucket-host-website-rx.s3.amazonaws.com"
+    origin_id   = "bucket-host-website-rx"
+  }
+
+  enabled             = true
+  is_ipv6_enabled     = true
+  default_root_object = "index.html"
+
+  aliases = ["rx.coxy1989.com"]
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "bucket-host-website-rx"
+
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  custom_error_response {
+    error_code            = 400
+    error_caching_min_ttl = 300
+    response_code         = 200
+    response_page_path    = "/404.html"
+  }
+  
+  custom_error_response {
+    error_code            = 403
+    error_caching_min_ttl = 300
+    response_code         = 200
+    response_page_path    = "/404.html"
+  }
+  
+  custom_error_response {
+    error_code            = 404
+    error_caching_min_ttl = 300
+    response_code         = 200
+    response_page_path    = "/404.html"
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    acm_certificate_arn  = "arn:aws:acm:us-east-1:566664121427:certificate/e3872b01-34d6-4a38-b374-be7137c9b5df"
+    ssl_support_method = "sni-only"
+  }
+}
+

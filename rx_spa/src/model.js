@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs';
 const LATENT_DIM = 10;
 const NUM_CHARS = 40;
 
-const MODEL_URL = 'http://bucket-host-website-rx.s3-website.eu-west-2.amazonaws.com/train_tfjs/model.json'
+const MODEL_URL = 'https://rx.coxy1989.com/train_tfjs/model.json'
 
 const idx_char = {0: 'START',
             1: '\n',
